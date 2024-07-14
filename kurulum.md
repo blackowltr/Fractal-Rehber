@@ -1,10 +1,8 @@
-Bitcoin Fractal Node'u Çalıştırma Kılavuzu
-
-Teknik bilgi gerektirdiği için, Bitcoin Fractal Node'u bilgisayarınıza yerel olarak indirmeden önce sanal bir makine üzerinde çalıştırmanız önerilir.
+# Bitcoin Fractal Node Rehberi
 
 ### 1. Gerekli Paketlerin Kurulumu
 
-- Ubuntu 24.04 işletim sistemi kurulmuş olmalıdır.
+- İşletim sistemi: **Ubuntu 24.04**
 
   ```sh
     apt update && apt upgrade -y
