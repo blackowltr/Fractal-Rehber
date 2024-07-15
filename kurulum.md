@@ -2,7 +2,7 @@
 
 ### 1. Gerekli Paketlerin Kurulumu
 
-- İşletim sistemi: **Ubuntu 24.04**
+- İşletim sistemi: **Ubuntu 22.04 ve üstü**
 
   ```sh
     apt update && apt upgrade -y
