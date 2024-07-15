@@ -1,1 +1,1 @@
-# Biz Kötüyüz Aynen!
+# Biz Kötüyüz, Aynen!
