@@ -1,55 +1,82 @@
-# Bitcoin Fractal Node Rehberi
+## Bitcoin Fractal Node Kurulum Rehberi (Geliştirilmiş)
 
-![Ekran Resmi 2024-07-15 22 34 55](https://github.com/user-attachments/assets/3a366c1c-9002-492f-a023-4917f4b510af)
+Bu rehber, Ubuntu 22.04 veya üzeri işletim sistemi kullananlar için Fractal Bitcoin node kurulumunu adım adım anlatmaktadır. 
 
-[Fractal Explorer](https://explorer.fractalbitcoin.io/)
+* İşletim Sistemi: **Ubuntu 22.04 ve üstü**
 
-### 1. Gerekli Paketlerin Kurulumu
+**Kurulum:**
 
-- İşletim sistemi: **Ubuntu 22.04 ve üstü**
+1. **Paketlerin Kurulumu:**
 
-  ```shell
-    apt update && apt upgrade -y
-    apt install curl build-essential pkg-config libssl-dev git wget jq make gcc chrony -y
-  ```
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc chrony -y
+```
 
-### 2. Fractal Reposunu Çekin
-- Fractal reposunu indirin:
-  ```shell
-  screen -S node
-  git clone https://github.com/fractal-bitcoin/fractald-release.git
-  ```
+2. **Fractal Reposunu Çekme:**
 
-### 3. Dizini Değiştirin
-- İndirilen dizine gidin:
-  ```shell
-  cd /root/fractald-release/fractald-x86_64-linux-gnu
-  ```
+```bash
+screen -S node
+git clone https://github.com/fractal-bitcoin/fractald-release.git
+```
 
-### 4. Data Adında Yeni Bir Klasör Oluşturun
-- Yeni bir "data" klasörü oluşturun:
-  ```shell
-  mkdir data
-  ```
+3. **Dizine Gitme:**
 
-### 5. Konfigürasyon Dosyasını Kopyalayın
-- Konfigürasyon dosyasını "data" klasörüne kopyalayın:
-  ```shell
-  cp ./bitcoin.conf ./data
-  ```
+```bash
+cd /root/fractald-release/fractald-x86_64-linux-gnu
+```
 
-### 6. Node'u Başlatın
-- Node'u başlatmak için şu komutu kullanın:
-  ```shell
-  ./bin/bitcoind -datadir=./data/ -maxtipage=504576000
-  ```
+4. **Data Klasörünü Oluşturma:**
 
-**CTRL a d ile ayrılın.**
+```bash
+mkdir data
+```
 
-### 7. Cüzdan oluşturun
-```shell
-  cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-  ./bitcoin-wallet -wallet=CÜZDANADINIZIYAZIN create
-  ```
+5. **Konfigürasyon Dosyasını Kopyalama:**
 
-Şimdilik bu kadar.. Kısa bir aranın ardından kaldığımız yerden devam..
+```bash
+cp ./bitcoin.conf ./data
+```
+
+6. **Servis Oluşturma:**
+
+```bash
+tee /etc/systemd/system/fractald.service > /dev/null <<EOF
+[Unit]
+Description=Fractal Node
+After=network.target
+[Service]
+User=root
+ExecStart=/root/fractald-release/fractald-x86_64-linux-gnu/bin/bitcoind -datadir=/root/fractald-release/fractald-x86_64-linux-gnu/data/ -maxtipage=504576000
+Restart=always
+RestartSec=3
+LimitNOFILE=infinity
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+```bash
+sudo systemctl daemon-reload && \
+sudo systemctl enable fractald && \
+sudo systemctl start fractald
+```
+
+**Log Kontrol**
+```
+sudo journalctl -u fractald -fo cat
+```
+
+7. **Cüzdan Oluşturma:**
+
+```bash
+cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
+./bitcoin-wallet -wallet=CÜZDANADINIZIYAZIN create
+```
+
+**Not:** "CÜZDANADINIZIYAZIN" kısmını, oluşturmak istediğiniz cüzdanın adıyla değiştirin.
+
+**Ek Kaynaklar:**
+
+* Fractal Explorer: [https://explorer.fractalbitcoin.io/](https://explorer.fractalbitcoin.io/)
+
