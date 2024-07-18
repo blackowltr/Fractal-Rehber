@@ -69,10 +69,19 @@ sudo journalctl -u fractald -fo cat
 
 ```bash
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-./bitcoin-wallet -wallet=CÜZDANADINIZIYAZIN create
+./bitcoin-wallet -wallet=CÜZDAN_ADINIZ -legacy create
+```
+**Not:** `CÜZDAN_ADINIZ` kısmını, oluşturmak istediğiniz cüzdanın adıyla değiştirin.
+
+8. **Cüzdan Private Key Alma
+```bash
+cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
+```
+```bash
+./bitcoin-wallet -wallet=/root/.bitcoin/wallets/CUZDAN_ADINIZ/wallet.dat -dumpfile=/root/.bitcoin/wallets/CUZDAN_ADINIZ/MyPK.dat dump
 ```
 
-**Not:** "CÜZDANADINIZIYAZIN" kısmını, oluşturmak istediğiniz cüzdanın adıyla değiştirin.
+
 
 ![Ekran Resmi 2024-07-15 22 51 53](https://github.com/user-attachments/assets/e3abaf80-6ee2-4ae5-8fc4-dd6debe75819)
 
