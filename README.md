@@ -108,10 +108,7 @@ Bu adımlar sonucunda, belirlediğiniz isimde yeni bir cüzdan oluşturmuş olac
 8. **Cüzdan Private Key Alma:**
 > Aşağıdaki komutla private keyinizi öğrenebilirsiniz. Komutta herhangi bir yeri değiştirmenize gerek yok.
 ```shell
-cd
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-```
-```shell
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$CUZDAN/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump
 cd
 cat .bitcoin/wallets/$CUZDAN/MyPK.dat
