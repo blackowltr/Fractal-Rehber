@@ -1,6 +1,22 @@
 ## Bitcoin Fractal Node Kurulum Rehberi
 
-* İşletim Sistemi: **Ubuntu 22.04 ve üstü**
+Merhabalar,
+
+Binance tarafından desteklenen ve Eylül ayında tokeni çıkacak olan @fractal_bitcoin projesinde bir node kuracağız. 
+
+Node kurulum süreci ve ayrıntılı rehberi aşağıda bulabilirsiniz.
+
+## Fractal Bitcoin Nedir?
+
+Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bitcoin Core kodunu kullanan tek Bitcoin ölçeklendirme çözümüdür. Bu, Bitcoin'e uygulanan dünyadaki ilk sanallaştırma yöntemidir. Fractal, Bitcoin blok zincirini, Bitcoin ana zincirindeki tutarlılığı bozmadan ölçeklenebilir bir bilgi işlem sistemine kademeli olarak genişletir. Güçlü araçlar ve destek ile Fractal üzerine inşa etmek oldukça basittir.
+
+## Node Kurulum Rehberi
+
+### Gereksinimler
+
+- Ubuntu 22.04 veya daha yeni bir sürüm
+- En az 4 GB RAM
+- En az 100 GB boş disk alanı
 
 **Kurulum:**
 
