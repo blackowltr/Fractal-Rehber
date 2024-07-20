@@ -121,7 +121,7 @@ cat .bitcoin/wallets/$CUZDAN/MyPK.dat
 # Unisat Wallet'a Cüzdan Import Etme
 
 1. **Unisat Wallet'ı [İndirin](https://chromewebstore.google.com/detail/unisat-wallet/ppbibelpcjmhbdihakflkdcoccbgbkpo?pli=1)**
-   - Uygulamanızı başlatın.
+   - Cüzdanı açın.
 
 ![Ekran Resmi 2024-07-21 00 00 12](https://github.com/user-attachments/assets/0405f228-71e0-40e2-8066-7f1fc9ec9f4b)
 
