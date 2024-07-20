@@ -12,13 +12,15 @@ Node kurulum süreci ve ayrıntılı rehberi aşağıda bulabilirsiniz.
 
 Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bitcoin Core kodunu kullanan tek Bitcoin ölçeklendirme çözümüdür. Bu, Bitcoin'e uygulanan dünyadaki ilk sanallaştırma yöntemidir. Fractal, Bitcoin blok zincirini, Bitcoin ana zincirindeki tutarlılığı bozmadan ölçeklenebilir bir bilgi işlem sistemine kademeli olarak genişletir. Güçlü araçlar ve destek ile Fractal üzerine inşa etmek oldukça basittir.
 
-## Kurulum
-
 ### Gereksinimler
 
-- Ubuntu 22.04 veya daha yeni bir sürüm
-- En az 4 GB RAM
-- En az 100 GB boş disk alanı
+| Gereksinim                   | Açıklama                            |
+|------------------------------|-------------------------------------|
+| İşletim Sistemi              | Ubuntu 22.04 veya daha yeni bir sürüm |
+| Bellek (RAM)                 | En az 4 GB                          |
+| Disk Alanı                   | En az 100 GB boş disk alanı         |
+
+## Kurulum
 
 1. **Paketlerin Kurulumu:**
 
