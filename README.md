@@ -98,7 +98,6 @@ CUZDAN="cuzdan_adiniz"
 Terminalde aşağıdaki komutları sırasıyla çalıştırarak cüzdan oluşturun:
 
 ```shell
-cd
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet="$CUZDAN" -legacy create
 ```
@@ -113,18 +112,41 @@ cd
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
 ```
 ```shell
-cd
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$CUZDAN/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump
+cd
 cat .bitcoin/wallets/$CUZDAN/MyPK.dat
 ```
 
 ![Ekran Resmi 2024-07-20 23 51 03](https://github.com/user-attachments/assets/fc101ddd-93c1-4a27-bf27-bf3451fdc1ef)
 
-9. **Unisat Wallet'a PK İçe Aktarma**
+---------
 
-Önceki adımda PK'yi kopyalayın.
+# Unisat Wallet'a Cüzdan Import Etme
 
-Unisat Wallet'ı açın -> Ayarlar simgesi -> Sol üst köşedeki cüzdan #1'e tıklayın -> Sağ üst köşedeki "+" simgesine tıklayın -> Single private key geri yükle'yi seçin -> Keyi yapıştırın -> Cüzdan türünü seçin (Legacy)
+1. **Unisat Wallet'ı [İndirin](https://chromewebstore.google.com/detail/unisat-wallet/ppbibelpcjmhbdihakflkdcoccbgbkpo?pli=1)**
+   - Uygulamanızı başlatın.
+
+![Ekran Resmi 2024-07-21 00 00 12](https://github.com/user-attachments/assets/0405f228-71e0-40e2-8066-7f1fc9ec9f4b)
+
+2. **Ayarlar Menüsüne Girin**
+   - Ekranın sol üst köşesindeki wallet #1'e tıklayın ve ardından sağ üst köşedeki "+" simgesine tıklayın.
+
+![1](https://github.com/user-attachments/assets/116dedbd-a1f8-44cf-b7dd-828d6efe4207)
+
+4. **Private Key ile Geri Yükleme**
+   - "Single private key geri yükle" seçeneğini seçin.
+
+![1  (1)](https://github.com/user-attachments/assets/ada6a10e-0c6b-4007-8acf-18376100e426)
+
+5. **Private Key’i Yapıştırın**
+   - Size verilen private key’i ilgili alana yapıştırın.
+
+![1  (2)](https://github.com/user-attachments/assets/1e61209c-1128-4bd6-a87e-f8ed96924fc6)
+
+8. **Cüzdan Türünü Seçin**
+   - Cüzdan türü olarak "Legacy" seçeneğini işaretleyin.
+
+![1  (3)](https://github.com/user-attachments/assets/09497321-4475-4831-8ff6-d786d0fe295d)
 
 * Fractal Explorer: [https://explorer.fractalbitcoin.io/](https://explorer.fractalbitcoin.io/)
 
