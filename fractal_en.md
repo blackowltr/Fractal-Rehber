@@ -108,9 +108,9 @@ As a result of these steps, you will have created a new wallet with the specifie
 > You can learn your private key with the following command. There is no need to change any part of the command.
 ```shell
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-```
-```shell
-./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$WALLET/wallet.dat -dumpfile=/root/.bitcoin/wallets/$WALLET/MyPK.dat dump
+./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$CUZDAN/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump
+cd
+cat .bitcoin/wallets/$CUZDAN/MyPK.dat
 ```
 
 ![Screenshot 2024-07-15 22 51 53](https://github.com/user-attachments/assets/e3abaf80-6ee2-4ae5-8fc4-dd6debe75819)
