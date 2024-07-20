@@ -1,4 +1,4 @@
-## Bitcoin Fractal Node Kurulum Rehberi
+## Fractal Bitcoin Node Kurulum Rehberi
 
 Merhabalar.
 
