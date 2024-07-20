@@ -6,6 +6,8 @@ Binance tarafından desteklenen ve Eylül ayında tokeni çıkacak olan @fractal
 
 Node kurulum süreci ve ayrıntılı rehberi aşağıda bulabilirsiniz.
 
+![image](https://github.com/user-attachments/assets/7e9c98e5-d1e9-4a4f-a59f-4997a0e86d8e)
+
 ## Fractal Bitcoin Nedir?
 
 Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bitcoin Core kodunu kullanan tek Bitcoin ölçeklendirme çözümüdür. Bu, Bitcoin'e uygulanan dünyadaki ilk sanallaştırma yöntemidir. Fractal, Bitcoin blok zincirini, Bitcoin ana zincirindeki tutarlılığı bozmadan ölçeklenebilir bir bilgi işlem sistemine kademeli olarak genişletir. Güçlü araçlar ve destek ile Fractal üzerine inşa etmek oldukça basittir.
