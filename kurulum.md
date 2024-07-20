@@ -2,7 +2,7 @@
 
 Merhabalar,
 
-Binance tarafından desteklenen ve Eylül ayında tokeni çıkacak olan @fractal_bitcoin projesinde bir node kuracağız. 
+Binance tarafından desteklenen ve Eylül ayında tokeni çıkacak olan [Fractal Bitcoin](https://www.fractalbitcoin.io/) projesinde bir node kuracağız. 
 
 Node kurulum süreci ve ayrıntılı rehberi aşağıda bulabilirsiniz.
 
@@ -12,15 +12,13 @@ Node kurulum süreci ve ayrıntılı rehberi aşağıda bulabilirsiniz.
 
 Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bitcoin Core kodunu kullanan tek Bitcoin ölçeklendirme çözümüdür. Bu, Bitcoin'e uygulanan dünyadaki ilk sanallaştırma yöntemidir. Fractal, Bitcoin blok zincirini, Bitcoin ana zincirindeki tutarlılığı bozmadan ölçeklenebilir bir bilgi işlem sistemine kademeli olarak genişletir. Güçlü araçlar ve destek ile Fractal üzerine inşa etmek oldukça basittir.
 
-## Node Kurulum Rehberi
+## Kurulum
 
 ### Gereksinimler
 
 - Ubuntu 22.04 veya daha yeni bir sürüm
 - En az 4 GB RAM
 - En az 100 GB boş disk alanı
-
-**Kurulum:**
 
 1. **Paketlerin Kurulumu:**
 
@@ -83,25 +81,38 @@ sudo systemctl start fractald
 sudo journalctl -u fractald -fo cat
 ```
 
-7. **Cüzdan Oluşturma:**
+### 7. Cüzdan Oluşturma
 
-```bash
-cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-./bitcoin-wallet -wallet=CÜZDAN_ADINIZ -legacy create
+#### 7.1: Cüzdan Adını Belirleyin
+
+Öncelikle, oluşturmak istediğiniz cüzdan için bir ad belirleyin ve bu adı bir değişkene atayın:
+
+```shell
+CUZDAN="cuzdan_adiniz"
 ```
-**Not:** `CÜZDAN_ADINIZ` kısmını, oluşturmak istediğiniz cüzdanın adıyla değiştirin.
+> Not: `cuzdan_adiniz` kısmını, oluşturmak istediğiniz cüzdanın adıyla değiştirin.
+
+#### 7.2: Cüzdan Oluşturma Komutlarını Çalıştırın
+
+Terminalde aşağıdaki komutları sırasıyla çalıştırarak cüzdan oluşturun:
+
+```shell
+cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
+./bitcoin-wallet -wallet="$CUZDAN" -legacy create
+```
+Bu adımlar sonucunda, belirlediğiniz isimde yeni bir cüzdan oluşturmuş olacaksınız.
 
 8. **Cüzdan Private Key Alma:**
-```bash
+> Aşağıdaki komutla private keyinizi öğrenebilirsiniz. Komutta herhangi bir yeri değiştirmenize gerek yok.
+```shell
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
 ```
-```bash
-./bitcoin-wallet -wallet=/root/.bitcoin/wallets/CUZDAN_ADINIZ/wallet.dat -dumpfile=/root/.bitcoin/wallets/CUZDAN_ADINIZ/MyPK.dat dump
+```shell
+./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$CUZDAN/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump
 ```
 
 ![Ekran Resmi 2024-07-15 22 51 53](https://github.com/user-attachments/assets/e3abaf80-6ee2-4ae5-8fc4-dd6debe75819)
 
-**Ek Kaynaklar:**
-
 * Fractal Explorer: [https://explorer.fractalbitcoin.io/](https://explorer.fractalbitcoin.io/)
 
+**[Beni X'te takip etmeyi unutmayın](https://x.com/brsbtc)**
