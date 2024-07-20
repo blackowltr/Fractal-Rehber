@@ -32,7 +32,6 @@ sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc
 2. **Fractal Reposunu Çekme:**
 
 ```bash
-screen -S node
 git clone https://github.com/fractal-bitcoin/fractald-release.git
 ```
 
@@ -99,21 +98,33 @@ CUZDAN="cuzdan_adiniz"
 Terminalde aşağıdaki komutları sırasıyla çalıştırarak cüzdan oluşturun:
 
 ```shell
+cd
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet="$CUZDAN" -legacy create
 ```
 Bu adımlar sonucunda, belirlediğiniz isimde yeni bir cüzdan oluşturmuş olacaksınız.
 
+![Ekran Resmi 2024-07-15 22 51 53](https://github.com/user-attachments/assets/e3abaf80-6ee2-4ae5-8fc4-dd6debe75819)
+
 8. **Cüzdan Private Key Alma:**
 > Aşağıdaki komutla private keyinizi öğrenebilirsiniz. Komutta herhangi bir yeri değiştirmenize gerek yok.
 ```shell
+cd
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
 ```
 ```shell
+cd
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$CUZDAN/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump
+cat .bitcoin/wallets/$CUZDAN/MyPK.dat
 ```
 
-![Ekran Resmi 2024-07-15 22 51 53](https://github.com/user-attachments/assets/e3abaf80-6ee2-4ae5-8fc4-dd6debe75819)
+![Ekran Resmi 2024-07-20 23 51 03](https://github.com/user-attachments/assets/fc101ddd-93c1-4a27-bf27-bf3451fdc1ef)
+
+9. **Unisat Wallet'a PK İçe Aktarma**
+
+Önceki adımda PK'yi kopyalayın.
+
+Unisat Wallet'ı açın -> Ayarlar simgesi -> Sol üst köşedeki cüzdan #1'e tıklayın -> Sağ üst köşedeki "+" simgesine tıklayın -> Single private key geri yükle'yi seçin -> Keyi yapıştırın -> Cüzdan türünü seçin (Legacy)
 
 * Fractal Explorer: [https://explorer.fractalbitcoin.io/](https://explorer.fractalbitcoin.io/)
 
