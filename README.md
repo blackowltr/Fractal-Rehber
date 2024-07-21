@@ -89,8 +89,7 @@ sudo journalctl -u fractald -fo cat
 Öncelikle, oluşturmak istediğiniz cüzdan için bir ad belirleyin ve bu adı bir değişkene atayın:
 
 ```shell
-CUZDAN="cuzdan_adiniz"
-source $HOME/.bash_profile
+echo 'export CUZDAN="cuzdan_adiniz"' >> $HOME/.bashrc && source $HOME/.bashrc
 ```
 > Not: `cuzdan_adiniz` kısmını, oluşturmak istediğiniz cüzdanın adıyla değiştirin.
 
