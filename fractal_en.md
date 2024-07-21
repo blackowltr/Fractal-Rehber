@@ -89,8 +89,7 @@ sudo journalctl -u fractald -fo cat
 First, define a name for the wallet you want to create and assign this name to a variable:
 
 ```shell
-WALLET="your_wallet_name"
-source $HOME/.bash_profile
+echo 'export WALLET="your_wallet_name"' >> $HOME/.bashrc && source $HOME/.bashrc
 ```
 > Note: Replace `your_wallet_name` with the name of the wallet you want to create.
 
