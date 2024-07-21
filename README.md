@@ -90,6 +90,7 @@ sudo journalctl -u fractald -fo cat
 
 ```shell
 CUZDAN="cuzdan_adiniz"
+source $HOME/.bash_profile
 ```
 > Not: `cuzdan_adiniz` kısmını, oluşturmak istediğiniz cüzdanın adıyla değiştirin.
 
