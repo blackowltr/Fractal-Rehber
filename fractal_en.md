@@ -32,7 +32,6 @@ sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc
 2. **Clone the Fractal Repository:**
 
 ```shell
-screen -S node
 git clone https://github.com/fractal-bitcoin/fractald-release.git
 ```
 
@@ -91,6 +90,7 @@ First, define a name for the wallet you want to create and assign this name to a
 
 ```shell
 WALLET="your_wallet_name"
+source $HOME/.bash_profile
 ```
 > Note: Replace `your_wallet_name` with the name of the wallet you want to create.
 
