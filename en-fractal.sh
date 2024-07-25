@@ -25,6 +25,10 @@ install_packages() {
 
 # Function to download the node
 download_node() {
+    if ! rm -rf fractald-release; then
+        printf "Failed to remove existing fractald-release directory\n" >&2
+        return 1
+    fi
     if ! wget ${NODE_URL}; then
         printf "Failed to download the node archive\n" >&2
         return 1
