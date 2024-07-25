@@ -11,7 +11,7 @@ echo ' ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═
 echo -e '\e[0m'
 echo ''
 
-echo "BlackOwl Farkıyla Fractal Bitcoin Node Kurulum Rehberine Hoşgeldiniz!"
+echo "BlackOwl Farkıyla Fractal Bitcoin Node Kurulum Rehberine Hoş Geldiniz!"
 
 # Paketlerin Kurulumu
 echo "Paketler kuruluyor... Lütfen bekleyin."
