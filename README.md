@@ -87,24 +87,13 @@ sudo journalctl -u fractald -fo cat
 
 ### 7. Cüzdan Oluşturma
 
-#### 7.1: Cüzdan Adını Belirleyin
-
-Öncelikle, oluşturmak istediğiniz cüzdan için bir ad belirleyin ve bu adı bir değişkene atayın:
-
-```shell
-echo 'export CUZDAN="cuzdan_adiniz"' >> $HOME/.bashrc && source $HOME/.bashrc
-```
-> Not: `cuzdan_adiniz` kısmını, oluşturmak istediğiniz cüzdanın adıyla değiştirin.
-
-#### 7.2: Cüzdan Oluşturma Komutlarını Çalıştırın
-
 Terminalde aşağıdaki komutları sırasıyla çalıştırarak cüzdan oluşturun:
 
 ```shell
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-./bitcoin-wallet -wallet="$CUZDAN" -legacy create
+./bitcoin-wallet -wallet=wallet -legacy create
 ```
-Bu adımlar sonucunda, belirlediğiniz isimde yeni bir cüzdan oluşturmuş olacaksınız.
+Bu adımlar sonucunda, ismi `wallet` olan yeni bir cüzdan oluşturmuş olacaksınız.
 
 ![Ekran Resmi 2024-07-15 22 51 53](https://github.com/user-attachments/assets/e3abaf80-6ee2-4ae5-8fc4-dd6debe75819)
 
@@ -112,9 +101,9 @@ Bu adımlar sonucunda, belirlediğiniz isimde yeni bir cüzdan oluşturmuş olac
 > Aşağıdaki komutla private keyinizi öğrenebilirsiniz. Komutta herhangi bir yeri değiştirmenize gerek yok.
 ```shell
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$CUZDAN/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump
+./bitcoin-wallet -wallet=/root/.bitcoin/wallets/wallet/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump
 cd
-cat .bitcoin/wallets/$CUZDAN/MyPK.dat
+awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat
 ```
 
 ![Ekran Resmi 2024-07-20 23 51 03](https://github.com/user-attachments/assets/fc101ddd-93c1-4a27-bf27-bf3451fdc1ef)
@@ -126,7 +115,7 @@ cat .bitcoin/wallets/$CUZDAN/MyPK.dat
 1. **Unisat Wallet'ı [İndirin](https://chromewebstore.google.com/detail/unisat-wallet/ppbibelpcjmhbdihakflkdcoccbgbkpo?pli=1)**
    - Cüzdanı açın.
 
-![Ekran Resmi 2024-07-21 00 00 12](https://github.com/user-attachments/assets/0405f228-71e0-40e2-8066-7f1fc9ec9f4b)
+![1  (4)](https://github.com/user-attachments/assets/a5cb92dc-417b-4868-bcbb-68e24e3dd354)
 
 2. **Ayarlar Menüsüne Girin**
    - Ekranın sol üst köşesindeki wallet #1'e tıklayın ve ardından sağ üst köşedeki "+" simgesine tıklayın.
