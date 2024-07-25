@@ -9,7 +9,29 @@ print_welcome_message() {
     printf " ██████╔╝███████╗██║  ██║╚██████╗██║  ██╗╚██████╔╝╚███╔███╔╝███████╗\n"
     printf " ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝ ╚══════╝\n"
     printf "\e[0m\n\n"
-    printf "\e[33mFractal Bitcoin Node Kurulum Rehberi\e[0m\n\n"
+    printf "\e[33mFractal Bitcoin Node Installation Guide\e[0m\n\n"
+}
+
+# Sistem gereksinimlerini gösterme
+display_system_requirements() {
+    printf "\e[34mRequired System Specifications\e[0m\n"
+    printf "\e[34m| Component    | Minimum Requirements |\e[0m\n"
+    printf "\e[34m|--------------|-----------------------|\e[0m\n"
+    printf "\e[34m| CPU          | 2+                    |\e[0m\n"
+    printf "\e[34m| RAM          | 4+ GB                 |\e[0m\n"
+    printf "\e[34m| Storage      | 20 GB SSD             |\e[0m\n"
+    printf "\e[34m| Operating System | Ubuntu 22         |\e[0m\n"
+    printf "\e[0m\n"
+}
+
+# Kullanıcıdan onay alma
+get_user_confirmation() {
+    read -p "Do you want to continue with the installation? (y/n): " user_input
+    case $user_input in
+        [Yy]* ) return 0;;
+        [Nn]* ) return 1;;
+        * ) echo "Please answer with y or n."; get_user_confirmation;;
+    esac
 }
 
 # Global variables
@@ -22,6 +44,25 @@ NODE_DIR="/root/${NODE_NAME}-${NODE_VERSION}-x86_64-linux-gnu"
 DATA_DIR="${NODE_DIR}/data"
 CONFIG_FILE="bitcoin.conf"
 SERVICE_FILE="/etc/systemd/system/${NODE_NAME}.service"
+
+# Check for root privileges
+check_root() {
+    if [[ $EUID -ne 0 ]]; then
+        printf "This script must be run as root.\n" >&2
+        exit 1
+    fi
+}
+
+# Check for necessary commands
+check_commands() {
+    local cmds="wget tar awk"
+    for cmd in $cmds; do
+        if ! command -v $cmd &> /dev/null; then
+            printf "Command $cmd could not be found. Please install it.\n" >&2
+            exit 1
+        fi
+    done
+}
 
 # Print welcome message
 print_welcome_message
@@ -153,6 +194,16 @@ get_wallet_private_key() {
 
 # Main function
 main() {
+    check_root
+    check_commands
+
+    if ! get_user_confirmation; then
+        printf "Kurulum iptal edildi.\n"
+        return 1
+    fi
+
+    display_system_requirements
+
     if ! install_packages; then
         printf "Package installation failed\n" >&2
         return 1
