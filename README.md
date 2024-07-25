@@ -22,38 +22,40 @@ Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bit
 
 ## Kurulum
 
-1. **Paketlerin Kurulumu:**
+1. **Paketleri Kurun:**
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc chrony -y
 ```
 
-2. **Fractal Reposunu Çekme:**
+## Node Kurulumu
+
+1. **Fractal Reposunu Çekme:**
 
 ```bash
-git clone https://github.com/fractal-bitcoin/fractald-release.git
+wget https://github.com/fractal-bitcoin/fractald-release/releases/download/v1.0.6/fractald-1.0.6-x86_64-linux-gnu.tar.gz
 ```
 
-3. **Dizine Gitme:**
+2. **Dosyayı Çıkarma:**
 
 ```bash
-cd /root/fractald-release/fractald-x86_64-linux-gnu
+tar -zxvf fractald-1.0.6-x86_64-linux-gnu.tar.gz
 ```
 
-4. **Data Klasörünü Oluşturma:**
+3. **Data Klasörünü Oluşturma:**
 
 ```bash
-mkdir data
+cd fractald-1.0.6-x86_64-linux-gnu && mkdir data
 ```
 
-5. **Konfigürasyon Dosyasını Kopyalama:**
+4. **Konfigürasyon Dosyasını Kopyalama:**
 
 ```bash
 cp ./bitcoin.conf ./data
 ```
 
-6. **Servis Oluşturma:**
+5. **Servis Oluşturma:**
 
 ```bash
 tee /etc/systemd/system/fractald.service > /dev/null <<EOF
@@ -62,7 +64,7 @@ Description=Fractal Node
 After=network.target
 [Service]
 User=root
-ExecStart=/root/fractald-release/fractald-x86_64-linux-gnu/bin/bitcoind -datadir=/root/fractald-release/fractald-x86_64-linux-gnu/data/ -maxtipage=504576000
+ExecStart=/root/fractald-1.0.6-x86_64-linux-gnu/bin/bitcoind -datadir=/root/fractald-1.0.6-x86_64-linux-gnu/data/ -maxtipage=504576000
 Restart=always
 RestartSec=3
 LimitNOFILE=infinity
@@ -78,7 +80,8 @@ sudo systemctl start fractald
 ```
 
 **Log Kontrol**
-```
+
+```bash
 sudo journalctl -u fractald -fo cat
 ```
 
