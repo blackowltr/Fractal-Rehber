@@ -119,7 +119,7 @@ cd && awk -F 'checksum,' '/checksum/ {print "Your Wallet Private Key:" $2}' .bit
 ![1](https://github.com/user-attachments/assets/116dedbd-a1f8-44cf-b7dd-828d6efe4207)
 
 4. **Restore with Private Key**
-   - Select the "Restore with single private key" option.
+   - Select the "Restore from single private key" option.
 
 ![1  (1)](https://github.com/user-attachments/assets/ada6a10e-0c6b-4007-8acf-18376100e426)
 
