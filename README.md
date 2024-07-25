@@ -102,8 +102,7 @@ Bu adımlar sonucunda, ismi `wallet` olan yeni bir cüzdan oluşturmuş olacaks�
 ```shell
 cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/wallet/wallet.dat -dumpfile=/root/.bitcoin/wallets/wallet/MyPK.dat dump
-cd
-awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat
+cd && awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat
 ```
 ---------
 
