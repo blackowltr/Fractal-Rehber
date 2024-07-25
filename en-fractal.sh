@@ -1,5 +1,17 @@
 #!/bin/bash
 
+print_welcome_message() {
+    printf "\n\e[40m\e[92m"
+    printf " ██████╗ ██╗      █████╗  ██████╗██╗  ██╗ ██████╗ ██╗    ██╗██╗\n"
+    printf " ██╔══██╗██║     ██╔══██╗██╔════╝██║ ██╔╝██╔═══██╗██║    ██║██║\n"
+    printf " ██████╔╝██║     ███████║██║     █████╔╝ ██║   ██║██║ █╗ ██║██║\n"
+    printf " ██╔══██╗██║     ██╔══██║██║     ██╔═██╗ ██║   ██║██║███╗██║██║\n"
+    printf " ██████╔╝███████╗██║  ██║╚██████╗██║  ██╗╚██████╔╝╚███╔███╔╝███████╗\n"
+    printf " ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝ ╚══════╝\n"
+    printf "\e[0m\n\n"
+    printf "\e[33mFractal Bitcoin Node Kurulum Rehberi\e[0m\n\n"
+}
+
 # Global variables
 PACKAGE_LIST="curl build-essential pkg-config libssl-dev git wget jq make gcc chrony"
 NODE_VERSION="1.0.6"
@@ -11,8 +23,18 @@ DATA_DIR="${NODE_DIR}/data"
 CONFIG_FILE="bitcoin.conf"
 SERVICE_FILE="/etc/systemd/system/${NODE_NAME}.service"
 
+# Print welcome message
+print_welcome_message
+
+# Function to print a colored header
+print_header() {
+    local header=$1
+    printf "\e[33m%s\e[0m\n" "$header"
+}
+
 # Function to install packages
 install_packages() {
+    print_header "Installing Packages"
     if ! sudo apt update && sudo apt upgrade -y; then
         printf "Failed to update and upgrade packages\n" >&2
         return 1
@@ -25,6 +47,7 @@ install_packages() {
 
 # Function to download the node
 download_node() {
+    print_header "Downloading Node"
     if ! rm -rf fractald-release; then
         printf "Failed to remove existing fractald-release directory\n" >&2
         return 1
@@ -41,6 +64,7 @@ download_node() {
 
 # Function to setup the node data directory
 setup_data_directory() {
+    print_header "Setting Up Data Directory"
     if ! cd ${NODE_DIR} || ! mkdir -p ${DATA_DIR}; then
         printf "Failed to create data directory\n" >&2
         return 1
@@ -53,6 +77,7 @@ setup_data_directory() {
 
 # Function to create systemd service
 create_service() {
+    print_header "Creating Systemd Service"
     if ! tee ${SERVICE_FILE} > /dev/null <<EOF
 [Unit]
 Description=Fractal Node
@@ -86,6 +111,7 @@ EOF
 
 # Function to create wallet
 create_wallet() {
+    print_header "Creating Wallet"
     printf "Would you like to create a wallet now? (yes/no): "
     read -r response
     if [[ "${response}" == "yes" ]]; then
@@ -101,6 +127,7 @@ create_wallet() {
 
 # Function to get wallet private key
 get_wallet_private_key() {
+    print_header "Retrieving Wallet Private Key"
     printf "Would you like to retrieve your wallet private key now? (yes/no): "
     read -r response
     if [[ "${response}" == "yes" ]]; then
@@ -118,7 +145,7 @@ get_wallet_private_key() {
             printf "Failed to retrieve wallet private key\n" >&2
             return 1
         fi
-        printf "\e[32mCüzdan Private Keyiniz: %s\e[0m\n" "${private_key}"
+        printf "\e[32mYour wallet's private key: %s\e[0m\n" "${private_key}"
     else
         printf "Skipping wallet private key retrieval.\n"
     fi
