@@ -108,10 +108,17 @@ get_wallet_private_key() {
             printf "Failed to dump wallet private key\n" >&2
             return 1
         fi
-        if ! cd && ! awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat; then
+        if ! cd; then
+            printf "Failed to change directory to home\n" >&2
+            return 1
+        fi
+        local private_key
+        private_key=$(awk -F 'checksum,' '/checksum/ {print $2}' .bitcoin/wallets/wallet/MyPK.dat)
+        if [[ -z "${private_key}" ]]; then
             printf "Failed to retrieve wallet private key\n" >&2
             return 1
         fi
+        printf "\e[32mCüzdan Private Keyiniz: %s\e[0m\n" "${private_key}"
     else
         printf "Skipping wallet private key retrieval.\n"
     fi
