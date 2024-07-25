@@ -95,7 +95,7 @@ cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
 ```
 Bu adımlar sonucunda, ismi `wallet` olan yeni bir cüzdan oluşturmuş olacaksınız.
 
-![Ekran Resmi 2024-07-15 22 51 53](https://github.com/user-attachments/assets/e3abaf80-6ee2-4ae5-8fc4-dd6debe75819)
+![Ekran Resmi 2024-07-25 23 40 11](https://github.com/user-attachments/assets/347d7ae9-5de4-42de-a0cc-9c7b7edef409)
 
 8. **Cüzdan Private Key Alma:**
 > Aşağıdaki komutla private keyinizi öğrenebilirsiniz. Komutta herhangi bir yeri değiştirmenize gerek yok.
@@ -105,9 +105,6 @@ cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
 cd
 awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat
 ```
-
-![Ekran Resmi 2024-07-20 23 51 03](https://github.com/user-attachments/assets/fc101ddd-93c1-4a27-bf27-bf3451fdc1ef)
-
 ---------
 
 # Unisat Wallet'a Cüzdan Import Etme
