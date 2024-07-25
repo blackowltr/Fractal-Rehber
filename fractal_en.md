@@ -20,7 +20,12 @@ Fractal Bitcoin is the only Bitcoin scaling solution that uses the Bitcoin Core 
 | Memory (RAM)                 | At least 4 GB                       |
 | Disk Space                   | At least 100 GB free disk space     |
 
-## Installation
+## Single Command Installation
+
+```bash
+bash <(curl -s https://raw.githubusercontent.com/blackowltr/Fractal-Rehber/main/en-fractal.sh) &>/dev/null
+```
+## Manuel Installation
 
 1. **Install Packages:**
 
