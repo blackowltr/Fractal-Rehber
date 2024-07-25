@@ -24,14 +24,23 @@ fi
 # Paketlerin Kurulumu
 echo -e '\e[33mPaketlerin Kurulumu\e[0m'
 echo "Paketler kuruluyor... Lütfen bekleyin."
-sudo apt update && sudo apt upgrade -y
-sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc chrony -y
+if ! sudo apt update && sudo apt upgrade -y; then
+  echo "Paket güncelleme veya yükseltme işlemi başarısız oldu."
+  exit 1
+fi
+if ! sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc chrony -y; then
+  echo "Gerekli paketlerin kurulumu başarısız oldu."
+  exit 1
+fi
 echo "Paketler kuruldu."
 
 # Fractal Reposunu Çekme
 echo -e '\e[33mFractal Reposunu Çekme\e[0m'
 echo "Fractal reposunu sunucumuza çekiyoruz..."
-git clone https://github.com/fractal-bitcoin/fractald-release.git
+if ! git clone https://github.com/fractal-bitcoin/fractald-release.git; then
+  echo "Fractal reposunun çekilmesi başarısız oldu."
+  exit 1
+fi
 echo "Fractal reposu başarıyla sunucumuza çekildi."
 
 # Dizine Gitme
@@ -41,19 +50,25 @@ cd /root/fractald-release/fractald-x86_64-linux-gnu || { echo "Dizin bulunamadı
 # Data Klasörünü Oluşturma
 echo -e '\e[33mData Klasörünü Oluşturma\e[0m'
 echo "Data klasörünü oluşturuyoruz..."
-mkdir -p data
+if ! mkdir -p data; then
+  echo "Data klasörünün oluşturulması başarısız oldu."
+  exit 1
+fi
 echo "Data klasörü oluşturuldu."
 
 # Konfigürasyon Dosyasını Kopyalama
 echo -e '\e[33mKonfigürasyon Dosyasını Kopyalama\e[0m'
 echo "Konfigürasyon dosyasını kopyalıyoruz..."
-cp ./bitcoin.conf ./data
+if ! cp ./bitcoin.conf ./data; then
+  echo "Konfigürasyon dosyasının kopyalanması başarısız oldu."
+  exit 1
+fi
 echo "Konfigürasyon dosyası kopyalandı."
 
 # Servis Oluşturma
 echo -e '\e[33mServis Oluşturma\e[0m'
 echo "Servis dosyasını oluşturuyoruz..."
-tee /etc/systemd/system/fractald.service > /dev/null <<EOF
+if ! tee /etc/systemd/system/fractald.service > /dev/null <<EOF
 [Unit]
 Description=Fractal Node
 After=network.target
@@ -66,13 +81,26 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 EOF
+then
+  echo "Servis dosyasının oluşturulması başarısız oldu."
+  exit 1
+fi
 
 # Servisi Başlatma
 echo -e '\e[33mServisi Başlatma\e[0m'
 echo "Servisi başlatıyoruz..."
-sudo systemctl daemon-reload
-sudo systemctl enable fractald
-sudo systemctl start fractald
+if ! sudo systemctl daemon-reload; then
+  echo "Servis daemon yeniden yükleme başarısız oldu."
+  exit 1
+fi
+if ! sudo systemctl enable fractald; then
+  echo "Servis etkinleştirme başarısız oldu."
+  exit 1
+fi
+if ! sudo systemctl start fractald; then
+  echo "Servisin başlatılması başarısız oldu."
+  exit 1
+fi
 echo "Servis başlatıldı."
 
 # Log Kontrol
@@ -94,7 +122,10 @@ if [ "$cevap" == "evet" ]; then
   # Cüzdan Oluşturma Komutları
   echo "Cüzdan oluşturuluyor..."
   cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-  ./bitcoin-wallet -wallet="$CUZDAN" -legacy create
+  if ! ./bitcoin-wallet -wallet="$CUZDAN" -legacy create; then
+    echo "Cüzdan oluşturma başarısız oldu."
+    exit 1
+  fi
   echo "Cüzdan başarıyla oluşturuldu."
 
   # Cüzdan Yedeği Alma
@@ -103,8 +134,10 @@ if [ "$cevap" == "evet" ]; then
   if [ "$yedek_cevap" == "evet" ]; then
     echo -e '\e[33mCüzdan Yedeği Alma\e[0m'
     echo "Cüzdan yedeğinizi alıyoruz..."
-    cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
-    ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$CUZDAN/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump
+    if ! ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/$CUZDAN/wallet.dat -dumpfile=/root/.bitcoin/wallets/$CUZDAN/MyPK.dat dump; then
+      echo "Cüzdan yedeği alma işlemi başarısız oldu."
+      exit 1
+    fi
     cat /root/.bitcoin/wallets/$CUZDAN/MyPK.dat
     echo "Cüzdan yedeğiniz başarıyla alındı ve ekrana yazdırıldı."
   else
