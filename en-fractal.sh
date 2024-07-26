@@ -123,12 +123,15 @@ create_service() {
 [Unit]
 Description=Fractal Node
 After=network.target
+
 [Service]
 User=root
-ExecStart=${NODE_DIR}/bin/bitcoind -datadir=${DATA_DIR} -maxtipage=504576000
+WorkingDirectory=${NODE_DIR}
+ExecStart=${NODE_DIR}/bin/bitcoind -datadir=${DATA_DIR}/ -maxtipage=504576000
 Restart=always
 RestartSec=3
 LimitNOFILE=infinity
+
 [Install]
 WantedBy=multi-user.target
 EOF
