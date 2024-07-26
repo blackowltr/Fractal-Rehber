@@ -58,16 +58,19 @@ cp ./bitcoin.conf ./data
 5. **Servis Oluşturma:**
 
 ```bash
-tee /etc/systemd/system/fractald.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/fractald.service > /dev/null <<EOF
 [Unit]
 Description=Fractal Node
 After=network.target
+
 [Service]
 User=root
+WorkingDirectory=/root/fractald-1.0.6-x86_64-linux-gnu
 ExecStart=/root/fractald-1.0.6-x86_64-linux-gnu/bin/bitcoind -datadir=/root/fractald-1.0.6-x86_64-linux-gnu/data/ -maxtipage=504576000
 Restart=always
 RestartSec=3
 LimitNOFILE=infinity
+
 [Install]
 WantedBy=multi-user.target
 EOF
