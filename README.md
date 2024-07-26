@@ -93,7 +93,7 @@ sudo journalctl -u fractald -fo cat
 Terminalde aşağıdaki komutları sırasıyla çalıştırarak cüzdan oluşturun:
 
 ```shell
-cd /root/fractald-x86_64-linux-gnu/bin
+cd /root/fractald-1.0.6-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=wallet -legacy create
 ```
 Bu adımlar sonucunda, ismi `wallet` olan yeni bir cüzdan oluşturmuş olacaksınız.
@@ -103,7 +103,7 @@ Bu adımlar sonucunda, ismi `wallet` olan yeni bir cüzdan oluşturmuş olacaks�
 8. **Cüzdan Private Key Alma:**
 > Aşağıdaki komutla private keyinizi öğrenebilirsiniz. Komutta herhangi bir yeri değiştirmenize gerek yok.
 ```shell
-cd /root/fractald-x86_64-linux-gnu/bin
+cd /root/fractald-1.0.6-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/wallet/wallet.dat -dumpfile=/root/.bitcoin/wallets/wallet/MyPK.dat dump
 cd && awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat
 ```
