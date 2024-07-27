@@ -95,7 +95,7 @@ sudo journalctl -u fractald -fo cat
 Create a wallet by running the following commands in the terminal:
 
 ```shell
-cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
+cd /root/fractald-1.0.6-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=wallet -legacy create
 ```
 As a result of these steps, you will have created a new wallet named `wallet`.
