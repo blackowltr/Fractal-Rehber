@@ -105,9 +105,9 @@ As a result of these steps, you will have created a new wallet named `wallet`.
 8. **Retrieve Wallet Private Key:**
 > You can find out your private key using the following command. No need to change anything in the command.
 ```shell
-cd /root/fractald-release/fractald-x86_64-linux-gnu/bin
+cd /root/fractald-1.0.6-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/wallet/wallet.dat -dumpfile=/root/.bitcoin/wallets/wallet/MyPK.dat dump
-cd && awk -F 'checksum,' '/checksum/ {print "Your Wallet Private Key:" $2}' .bitcoin/wallets/wallet/MyPK.dat
+cd && awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat
 ```
 ---------
 
