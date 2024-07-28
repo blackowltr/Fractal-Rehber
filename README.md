@@ -22,6 +22,8 @@ Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bit
 
 ## Kurulum
 
+**Dikkat: Node için herhangi bir teşvik söz konusu değil. Lütfen, bunu bilerek kurulum yapınız.**
+
 1. **Paketleri Kurun:**
 
 ```bash
