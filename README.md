@@ -36,13 +36,13 @@ sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc
 1. **Fractal Reposunu Çekme:**
 
 ```bash
-wget https://github.com/fractal-bitcoin/fractald-release/releases/download/v0.1.5/fractald-0.1.5-x86_64-linux-gnu.tar.gz
+wget https://github.com/fractal-bitcoin/fractald-release/releases/download/v0.1.6/fractald-0.1.6-x86_64-linux-gnu.tar.gz
 ```
 
 2. **Dosyayı Çıkarma:**
 
 ```bash
-tar -zxvf fractald-0.1.5-x86_64-linux-gnu.tar.gz
+tar -zxvf fractald-0.1.6-x86_64-linux-gnu.tar.gz
 ```
 
 3. **Data Klasörünü Oluşturma:**
@@ -67,8 +67,8 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/root/fractald-0.1.5-x86_64-linux-gnu
-ExecStart=/root/fractald-0.1.5-x86_64-linux-gnu/bin/bitcoind -datadir=/root/fractald-0.1.5-x86_64-linux-gnu/data/ -maxtipage=504576000
+WorkingDirectory=/root/fractald-0.1.6-x86_64-linux-gnu
+ExecStart=/root/fractald-0.1.6-x86_64-linux-gnu/bin/bitcoind -datadir=/root/fractald-0.1.6-x86_64-linux-gnu/data/ -maxtipage=504576000
 Restart=always
 RestartSec=3
 LimitNOFILE=infinity
@@ -95,7 +95,7 @@ sudo journalctl -u fractald -fo cat
 Terminalde aşağıdaki komutları sırasıyla çalıştırarak cüzdan oluşturun:
 
 ```shell
-cd /root/fractald-0.1.5-x86_64-linux-gnu/bin
+cd /root/fractald-0.1.6-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=wallet -legacy create
 ```
 Bu adımlar sonucunda, ismi `wallet` olan yeni bir cüzdan oluşturmuş olacaksınız.
@@ -105,7 +105,7 @@ Bu adımlar sonucunda, ismi `wallet` olan yeni bir cüzdan oluşturmuş olacaks�
 8. **Cüzdan Private Key Alma:**
 > Aşağıdaki komutla private keyinizi öğrenebilirsiniz. Komutta herhangi bir yeri değiştirmenize gerek yok.
 ```shell
-cd /root/fractald-0.1.5-x86_64-linux-gnu/bin
+cd /root/fractald-0.1.6-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/wallet/wallet.dat -dumpfile=/root/.bitcoin/wallets/wallet/MyPK.dat dump
 cd && awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat
 ```
