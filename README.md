@@ -48,7 +48,7 @@ tar -zxvf fractald-0.1.6-x86_64-linux-gnu.tar.gz
 3. **Data Klasörünü Oluşturma:**
 
 ```bash
-cd fractald-0.1.5-x86_64-linux-gnu && mkdir data
+cd fractald-0.1.6-x86_64-linux-gnu && mkdir data
 ```
 
 4. **Konfigürasyon Dosyasını Kopyalama:**
