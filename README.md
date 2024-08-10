@@ -92,7 +92,7 @@ sudo journalctl -u fractald -fo cat
 
 ### 7. Cüzdan Oluşturma
 
-Terminalde aşağıdaki komutları sırasıyla çalıştırarak cüzdan oluşturun:
+Aşağıdaki komutları sırasıyla çalıştırarak cüzdan oluşturun:
 
 ```shell
 cd /root/fractald-0.1.6-x86_64-linux-gnu/bin
