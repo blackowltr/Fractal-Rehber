@@ -26,7 +26,7 @@ Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bit
 
 1. **Paketleri Kurun:**
 
-```bash
+```shell
 sudo apt update && sudo apt upgrade -y
 sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc chrony -y
 ```
@@ -35,31 +35,31 @@ sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc
 
 1. **Fractal Reposunu Çekme:**
 
-```bash
+```shell
 wget https://github.com/fractal-bitcoin/fractald-release/releases/download/v0.1.7/fractald-0.1.7-x86_64-linux-gnu.tar.gz
 ```
 
 2. **Dosyayı Çıkarma:**
 
-```bash
+```shell
 tar -zxvf fractald-0.1.7-x86_64-linux-gnu.tar.gz
 ```
 
 3. **Data Klasörünü Oluşturma:**
 
-```bash
+```shell
 cd fractald-0.1.7-x86_64-linux-gnu && mkdir data
 ```
 
 4. **Konfigürasyon Dosyasını Kopyalama:**
 
-```bash
+```shell
 cp ./bitcoin.conf ./data
 ```
 
 5. **Servis Oluşturma:**
 
-```bash
+```shell
 sudo tee /etc/systemd/system/fractald.service > /dev/null <<EOF
 [Unit]
 Description=Fractal Node
@@ -78,7 +78,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-```bash
+```shell
 sudo systemctl daemon-reload && \
 sudo systemctl enable fractald && \
 sudo systemctl start fractald
@@ -108,6 +108,11 @@ Bu adımlar sonucunda, ismi `wallet` olan yeni bir cüzdan oluşturmuş olacaks�
 cd /root/fractald-0.1.7-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/wallet/wallet.dat -dumpfile=/root/.bitcoin/wallets/wallet/MyPK.dat dump
 cd && awk -F 'checksum,' '/checksum/ {print "Cüzdan Private Keyiniz:" $2}' .bitcoin/wallets/wallet/MyPK.dat
+```
+
+### Node Silme
+```shell
+curl -s https://raw.githubusercontent.com/blackowltr/Fractal-Rehber/main/delete.sh | bash
 ```
 ---------
 
