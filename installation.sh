@@ -11,12 +11,18 @@ LANGUAGE=""
 # Helper Functions
 ask_language() {
     while true; do
-        printf "Please select a language / Lütfen bir dil seçin:\n1) English\n2) Türkçe\nChoice / Seçim: "
+        printf "\n═══════════════════════════════════════════════\n"
+        printf "🌐 Please select a language / Lütfen bir dil seçin:\n"
+        printf "═══════════════════════════════════════════════\n"
+        printf "1) English\n"
+        printf "2) Türkçe\n"
+        printf "═══════════════════════════════════════════════\n"
+        printf "Choice / Seçim: "
         read -r choice
         case $choice in
             1) LANGUAGE="EN"; break ;;
             2) LANGUAGE="TR"; break ;;
-            *) printf "Invalid selection. Please try again.\nGeçersiz seçim. Lütfen tekrar deneyin.\n" ;;
+            *) printf "\n❌ Invalid selection. Please try again.\n🚫 Geçersiz seçim. Lütfen tekrar deneyin.\n" ;;
         esac
     done
 }
@@ -40,9 +46,9 @@ print_message() {
     local message_tr="$2"
 
     if [[ "$LANGUAGE" == "EN" ]]; then
-        printf "%s\n" "$message_en"
+        printf "\n✨ %s\n" "$message_en"
     else
-        printf "%s\n" "$message_tr"
+        printf "\n✨ %s\n" "$message_tr"
     fi
 }
 
@@ -96,7 +102,8 @@ create_wallet() {
 get_private_key() {
     print_message "Fetching private key..." "Private key alınıyor..."
     ./bitcoin-wallet -wallet="${WALLET_DIR}/wallet.dat" -dumpfile="${WALLET_DIR}/MyPK.dat" dump
-    cd && awk -F 'checksum,' '/checksum/ {print "Your wallet private key is: " $2}' "${WALLET_DIR}/MyPK.dat"
+    cd || exit
+    awk -F 'checksum,' '/checksum/ {print "\n🔐 Your wallet private key is: " $2}' "${WALLET_DIR}/MyPK.dat"
 }
 
 check_installation() {
@@ -116,8 +123,8 @@ remove_node() {
 main_menu() {
     while true; do
         print_message \
-        "Please choose an option:\n1) Installation\n2) Wallet Creation\n3) Remove Node\nChoice: " \
-        "Lütfen bir seçenek belirleyin:\n1) Kurulum\n2) Cüzdan Oluşturma\n3) Node Silme\nSeçim: "
+        "═══════════════════════════════════════════════\n🛠️  Please choose an option:\n1) Installation\n2) Wallet Creation\n3) Remove Node\n═══════════════════════════════════════════════\nChoice: " \
+        "═══════════════════════════════════════════════\n🛠️  Lütfen bir seçenek belirleyin:\n1) Kurulum\n2) Cüzdan Oluşturma\n3) Node Silme\n═══════════════════════════════════════════════\nSeçim: "
         read -r choice
         case $choice in
             1) installation_flow; break ;;
@@ -125,19 +132,19 @@ main_menu() {
                 if check_installation; then
                     wallet_creation_flow
                 else
-                    print_message "Fractal Node is not installed. Please run the installation first." \
-                                  "Fractal Node kurulu değil. Lütfen önce kurulumu yapın."
+                    print_message "❌ Fractal Node is not installed. Please run the installation first." \
+                                  "🚫 Fractal Node kurulu değil. Lütfen önce kurulumu yapın."
                 fi
                 break ;;
             3) 
                 if check_installation; then
                     remove_node
                 else
-                    print_message "Fractal Node is not installed. Cannot remove what is not installed." \
-                                  "Fractal Node kurulu değil. Kurulu olmayan bir şeyi kaldıramazsınız."
+                    print_message "❌ Fractal Node is not installed. Cannot remove what is not installed." \
+                                  "🚫 Fractal Node kurulu değil. Kurulu olmayan bir şeyi kaldıramazsınız."
                 fi
                 break ;;
-            *) print_message "Invalid selection. Please try again." "Geçersiz seçim. Lütfen tekrar deneyin." ;;
+            *) print_message "❌ Invalid selection. Please try again." "🚫 Geçersiz seçim. Lütfen tekrar deneyin." ;;
         esac
     done
 }
