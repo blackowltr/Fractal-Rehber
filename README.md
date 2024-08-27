@@ -12,6 +12,8 @@ Node kurulum süreci ve ayrıntılı rehberi aşağıda bulabilirsiniz.
 
 Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bitcoin Core kodunu kullanan tek Bitcoin ölçeklendirme çözümüdür. Bu, Bitcoin'e uygulanan dünyadaki ilk sanallaştırma yöntemidir. Fractal, Bitcoin blok zincirini, Bitcoin ana zincirindeki tutarlılığı bozmadan ölçeklenebilir bir bilgi işlem sistemine kademeli olarak genişletir. Güçlü araçlar ve destek ile Fractal üzerine inşa etmek oldukça basittir.
 
+**[Beni X'te takip etmeyi unutmayın.](https://x.com/brsbtc)**
+
 ### Gereksinimler
 
 | Gereksinim                   | Açıklama                            |
@@ -144,5 +146,3 @@ curl -s https://raw.githubusercontent.com/blackowltr/Fractal-Rehber/main/delete.
 ![1  (3)](https://github.com/user-attachments/assets/09497321-4475-4831-8ff6-d786d0fe295d)
 
 * Fractal Explorer: [https://explorer.fractalbitcoin.io/](https://explorer.fractalbitcoin.io/)
-
-**[Beni X'te takip etmeyi unutmayın](https://x.com/brsbtc)**
