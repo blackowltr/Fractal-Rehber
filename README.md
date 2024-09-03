@@ -6,6 +6,8 @@ Binance tarafından desteklenen ve Eylül ayında tokeni çıkacak olan [Fractal
 
 Node kurulum süreci ve ayrıntılı rehberi aşağıda bulabilirsiniz.
 
+### Node için herhangi bir teşvik söz konusu değil. Mining için bu node'un çalışıtırılmasına ihtiyaç vardır. [Detaylar için göz atın.](https://docs.fractalbitcoin.io/home/how-to-mine-fractal-bitcoin) Lütfen, bunları bilerek kurulum yapınız.
+
 ![image](https://github.com/user-attachments/assets/7e9c98e5-d1e9-4a4f-a59f-4997a0e86d8e)
 
 ## Fractal Bitcoin Nedir?
@@ -14,17 +16,7 @@ Fractal Bitcoin, sonsuz katmanları yinelemeli olarak ölçeklendirmek için Bit
 
 **[Beni X'te takip etmeyi unutmayın.](https://x.com/brsbtc)**
 
-### Gereksinimler
-
-| Gereksinim                   | Açıklama                            |
-|------------------------------|-------------------------------------|
-| İşletim Sistemi              | Ubuntu 22.04 veya daha yeni bir sürüm |
-| Bellek (RAM)                 | En az 4 GB                          |
-| Disk Alanı                   | En az 100 GB boş disk alanı         |
-
 ## Kurulum
-
-**Dikkat: Node için herhangi bir teşvik söz konusu değil. Mining için bu node'un çalışıtırılmasına ihtiyaç vardır. [Detaylar için göz atın.](https://docs.fractalbitcoin.io/home/how-to-mine-fractal-bitcoin) Lütfen, bunları bilerek kurulum yapınız.**
 
 1. **Paketleri Kurun:**
 
