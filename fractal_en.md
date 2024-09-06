@@ -37,19 +37,19 @@ sudo apt install curl build-essential pkg-config libssl-dev git wget jq make gcc
 1. **Download the Fractal Repository:**
 
 ```shell
-wget https://github.com/fractal-bitcoin/fractald-release/releases/download/v0.1.8/fractald-0.1.8-x86_64-linux-gnu.tar.gz
+wget https://github.com/fractal-bitcoin/fractald-release/releases/download/v0.2.0/fractald-0.2.0-x86_64-linux-gnu.tar.gz
 ```
 
 2. **Extract the File:**
 
 ```shell
-tar -zxvf fractald-0.1.8-x86_64-linux-gnu.tar.gz
+tar -zxvf fractald-0.2.0-x86_64-linux-gnu.tar.gz
 ```
 
 3. **Create the Data Folder:**
 
 ```shell
-cd fractald-0.1.8-x86_64-linux-gnu && mkdir data
+cd fractald-0.2.0-x86_64-linux-gnu && mkdir data
 ```
 
 4. **Copy the Configuration File:**
@@ -68,8 +68,8 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/root/fractald-0.1.8-x86_64-linux-gnu
-ExecStart=/root/fractald-0.1.8-x86_64-linux-gnu/bin/bitcoind -datadir=/root/fractald-0.1.8-x86_64-linux-gnu/data/ -maxtipage=504576000
+WorkingDirectory=/root/fractald-0.2.0-x86_64-linux-gnu
+ExecStart=/root/fractald-0.2.0-x86_64-linux-gnu/bin/bitcoind -datadir=/root/fractald-0.2.0-x86_64-linux-gnu/data/ -maxtipage=504576000
 Restart=always
 RestartSec=3
 LimitNOFILE=infinity
@@ -96,7 +96,7 @@ sudo journalctl -u fractald -fo cat
 Create a wallet by running the following commands sequentially:
 
 ```shell
-cd /root/fractald-0.1.8-x86_64-linux-gnu/bin
+cd /root/fractald-0.2.0-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=wallet -legacy create
 ```
 As a result of these steps, you will have created a new wallet named `wallet`.
@@ -106,7 +106,7 @@ As a result of these steps, you will have created a new wallet named `wallet`.
 8. **Get the Wallet Private Key:**
 > You can find out your private key with the following command. There is no need to change anything in the command.
 ```shell
-cd /root/fractald-0.1.8-x86_64-linux-gnu/bin
+cd /root/fractald-0.2.0-x86_64-linux-gnu/bin
 ./bitcoin-wallet -wallet=/root/.bitcoin/wallets/wallet/wallet.dat -dumpfile=/root/.bitcoin/wallets/wallet/MyPK.dat dump
 cd && awk -F 'checksum,' '/checksum/ {print "Your Wallet Private Key:" $2}' .bitcoin/wallets/wallet/MyPK.dat
 ```
